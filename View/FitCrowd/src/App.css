@@ -1,0 +1,24 @@
+
+.dashboard-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.dashboard-scroll::-webkit-scrollbar-track {
+  background: #14181f;
+}
+.dashboard-scroll::-webkit-scrollbar-thumb {
+  background: #2b303b46;
+  border-radius: 9999px;
+  height: 15px;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #14181f ;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #2b303b46;
+  border-radius: 9999px;
+}
