@@ -113,7 +113,7 @@ Em seguida abra o terminal e rode:
 ```
 cd backend
 npm install
-npm run dev
+node app.js
 ```
 
 
@@ -121,8 +121,14 @@ npm run dev
 ---
 
 ## Execução do Frontend
+Abra outro terminal, sem fechar o do backend, e rode: 
 
-
+```
+cd View
+cd FitCrowd
+npm install
+npm run dev
+```
 
 ---
 
