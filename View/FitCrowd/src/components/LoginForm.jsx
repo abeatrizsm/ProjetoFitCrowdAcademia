@@ -16,8 +16,13 @@ export default function LoginForm() {
 		const resposta = await loginUsuario(email,senha);
 		
 		if (resposta.sucesso) {
-			localStorage.setItem("usuario", JSON.stringify(resposta.usuario))
-			navegar("/dashboard")
+			localStorage.setItem("usuario", JSON.stringify({...resposta.usuario, tipo: resposta.tipo}))
+			console.log(resposta)
+			if (resposta.tipo === "instrutor") {
+				navegar("/instrutor");
+			} else {
+				navegar("/dashboard");
+			}
 		}else{
 			setMensagem(resposta.mensagem);
 		}

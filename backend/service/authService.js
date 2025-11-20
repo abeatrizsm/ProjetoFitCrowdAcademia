@@ -2,7 +2,7 @@ import { buscarUsuario } from "../dao/alunosDAO.js";
 import { buscarInstrutor } from "../dao/instrutoresDAO.js";
 
 export async function autenticarUsuario(email, senha_d) {
-    const usuario = await buscarUsuario(email);
+    let usuario = await buscarUsuario(email);
     let tipo = "aluno";
 
     if (!usuario) {

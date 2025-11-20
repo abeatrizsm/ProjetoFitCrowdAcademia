@@ -7,6 +7,7 @@ import DashboardView from "./telas/DashboardView";
 import PerfilView from "./telas/PerfilView";
 import TreinosView from "./telas/TreinosView";
 import { Toaster } from "react-hot-toast";
+import InstrutorDashboard from "./telas/InstrutorDashboard";
 
 function App() {
 	return (
@@ -29,7 +30,7 @@ function App() {
 					<Route
 						path="/dashboard"
 						element={
-							<RotaProtegida>
+							<RotaProtegida tipo="aluno">
 								<DashboardView />
 							</RotaProtegida>
 						}
@@ -37,7 +38,7 @@ function App() {
 					<Route
 						path="/treinos"
 						element={
-							<RotaProtegida>
+							<RotaProtegida tipo="aluno">
 								<TreinosView />
 							</RotaProtegida>
 						}
@@ -45,11 +46,19 @@ function App() {
 					<Route
 						path="/perfil"
 						element={
-							<RotaProtegida>
+							<RotaProtegida tipo="aluno">
 								<PerfilView />
 							</RotaProtegida>
 						}
 					></Route>
+					<Route
+						path="/instrutor"
+						element={
+							<RotaProtegida tipo="instrutor">
+								<InstrutorDashboard />
+							</RotaProtegida>
+						}
+					/>
 				</Routes>
 			</Router>
 		</>
@@ -58,26 +67,4 @@ function App() {
 
 export default App;
 
-// export function RotaProtegida({ children, tipoPermitido }) {
-//   const usuario = JSON.parse(localStorage.getItem("usuario"));
 
-//   if (!usuario) return <Navigate to="/" replace />;
-
-//   if (tipoPermitido && usuario.tipo !== tipoPermitido) {
-//     return <Navigate to="/acesso-negado" replace />;
-//   }
-
-//   return children;
-// }
-// E usa assim:
-
-// jsx
-// Copiar código
-// <Route
-//   path="/dashboard-instrutor"
-//   element={
-//     <RotaProtegida tipoPermitido="instrutor">
-//       <DashboardInstrutorView />
-//     </RotaProtegida>
-//   }
-// />

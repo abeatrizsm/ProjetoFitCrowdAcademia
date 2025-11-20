@@ -10,6 +10,7 @@ import { registrarCheckIn } from "../services/frequenciaService";
 export default function Dashboard(){
     const usuario = JSON.parse(localStorage.getItem("usuario"));
     const [historico, setHistorico] = useState([]);
+	console.log(usuario)
 
 	async function carregarHistorico() {
 		const resposta = await buscarHistorico(usuario.id_aluno)
@@ -62,7 +63,7 @@ export default function Dashboard(){
 						</div>
 					</div>
 				</div>
-				<div className="flex gap-6">
+				{/* <div className="flex gap-6">
 					<ContainerStatus
 						titulo={"Dias ativos:"}
 						icone={<MdCalendarMonth />}
@@ -81,7 +82,7 @@ export default function Dashboard(){
 						subtitulo={"dias consecultivos"}
 						dado={"7"}
 					></ContainerStatus>
-				</div>
+				</div> */}
 				<div className="flex flex-col w-full h-96 mt-10 bg-[#191d24] border border-[#2b303b] rounded-2xl p-6 pl-7">
 					<h2 className="text-white font-semibold text-3xl">
 						Histórico de Treinos
