@@ -8,6 +8,9 @@ import PerfilView from "./telas/PerfilView";
 import TreinosView from "./telas/TreinosView";
 import { Toaster } from "react-hot-toast";
 import InstrutorDashboard from "./telas/InstrutorDashboard";
+import InstrutorTreinos from "./telas/InstrutorTreinos";
+import InstrutorPlanos from "./telas/InstrutorPlanos";
+import InstrutorExercicios from "./telas/InstrutorExercicios";
 
 function App() {
 	return (
@@ -56,6 +59,30 @@ function App() {
 						element={
 							<RotaProtegida tipo="instrutor">
 								<InstrutorDashboard />
+							</RotaProtegida>
+						}
+					/>
+					<Route
+						path="/criarPlano"
+						element={
+							<RotaProtegida tipo="instrutor">
+								<InstrutorPlanos />
+							</RotaProtegida>
+						}
+					/>
+					<Route
+						path="/criarTreinos"
+						element={
+							<RotaProtegida tipo="instrutor">
+								<InstrutorTreinos />
+							</RotaProtegida>
+						}
+					/>
+					<Route
+						path="/criarExercicios"
+						element={
+							<RotaProtegida tipo="instrutor">
+								<InstrutorExercicios />
 							</RotaProtegida>
 						}
 					/>

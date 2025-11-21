@@ -22,4 +22,8 @@ export async function buscarFrequencia(id) {
     const [rows] = await db.query("select id_frequencia, data_aula, presenca from frequencia where id_aluno = ? order by data_aula desc", id)
     return rows;
 }
+export async function criarAlunoDAO({ nome, email, senha, telefone, cpf }) {
+	const [result] = await db.query("insert into alunos (nome, email, senha, telefone, cpf, data_ingresso, dias_ativos, treinos_concluidos) values (?, ?, ?, ?, ?, CURDATE(), 0, 0)", [nome, email, senha, telefone,cpf]);
+	return result.insertId;
+}
 
