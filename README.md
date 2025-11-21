@@ -1,3 +1,21 @@
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+
+[Vite.js]: https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white
+[Vite-url]: https://vitejs.dev/
+
+[Tailwind.css]: https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white
+[Tailwind-url]: https://tailwindcss.com/
+
+[Node.js]: https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white
+[Node-url]: https://nodejs.org/
+
+[Express.js]: https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white
+[Express-url]: https://expressjs.com/
+
+[MySQL.com]: https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white
+[MySQL-url]: https://www.mysql.com/
+
 # FitCrowd – Sistema de Gestão de Academia
 
 Projeto full-stack para gerenciamento de alunos, instrutores, treinos e planos de treino.
@@ -5,101 +23,23 @@ Desenvolvido utilizando React (Vite + TailwindCSS) no frontend e Node.js + Expre
 
 Este projeto foi criado como entrega acadêmica da disciplina de Ambiente de Dados.
 
----
-
-## Arquitetura do Projeto
-
-```
-AplicativoAcademia/
-│
-├── backend/
-│   ├── config/
-│   ├── controller/
-│   ├── service/
-│   ├── dao/
-│   ├── routes/
-│   ├── app.js
-│   ├── package.json
-│   └── node_modules/
-│
-└── frontend/
-    ├── src/
-    │   ├── pages/
-    │   ├── components/
-    │   ├── services/
-    │   ├── assets/
-    │   └── App.jsx
-    ├── index.html
-    ├── package.json
-    └── node_modules/
-```
-
-
----
 
 ## Tecnologias Utilizadas
 
 ### Frontend
-- React
-- Vite
-- TailwindCSS
-- React Router
-- React Icons
-
-### Backend
-- Node.js
-- Express
-- MySQL2
-- Arquitetura em camadas (Routes, Controller, Service, DAO)
-
-### Banco de Dados
-- MySQL
-
----
-
-## Modelagem das Tabelas
-
-### alunos
-- id_aluno
-- nome
-- cpf
-- data_ingresso
-- telefone
-- email
-- senha
-- dias_ativos
-- treinos_concluidos
-
-### instrutores
-- id_instrutor
-- nome
-- especialidade
-- email
-- senha
-
-### plano_treino
-- id_plano
-- nome_plano
-- objetivo
-- duracao_semanas
-- nivel
-- frequencia_semanal
-- id_aluno (FK)
-- id_instrutor (FK)
-
----
-
-## Relacionamentos
-
-- Instrutor elabora plano de treino
-- Aluno possui plano de treino
-- Plano de treino é composto por treinos
-- Treinos são compostos por exercícios
-
+* [![React][React.js]][React-url]
+* [![Vite][Vite.js]][Vite-url]
+* [![TailwindCSS][Tailwind.css]][Tailwind-url]
+ ### Backend
+* [![NodeJS][Node.js]][Node-url]
+* [![Express][Express.js]][Express-url]
+ ### Banco de Dados
+* [![MySQL][MySQL.com]][MySQL-url]
 ---
 
 ## Execução do Backend
-Primeiro você deve alterar as credencias no arquivo "db.js" que está na pasta config no backend. Configure com base no seu MySQL, mas na maioria dos casos, basta mudar o campo "password" para a sua senha.
+> [!NOTE]
+> Primeiro você deve alterar as credencias no arquivo "db.js" que está na pasta config no backend. Configure com base no seu MySQL, mas na maioria dos casos, basta mudar o campo "password" para a sua senha.
 
 ```
 const db = mysql2.createPool({
@@ -116,8 +56,6 @@ npm install
 node app.js
 ```
 
-
-
 ---
 
 ## Execução do Frontend
@@ -129,25 +67,8 @@ cd FitCrowd
 npm install
 npm run dev
 ```
-
----
-
-## Endpoints
-
-### Alunos
-- GET /alunos
-- POST /alunos
-- PUT /alunos/:id
-- DELETE /alunos/:id
-
-### Instrutores
-- GET /instrutores
-- POST /instrutores
-
-### Planos de Treino
-- GET /planos
-- POST /planos
-- GET /planos/:id
+> [!IMPORTANT]
+> É necessário manter os dois terminais rodando simultaneamente para que o front e o back funcionem em conjunto.
 
 ---
 
