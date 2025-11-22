@@ -12,14 +12,14 @@ O **FitCrowd** é um sistema full-stack desenvolvido para oferecer uma solução
 ---
 
 ## Tecnologias Utilizadas
-O sistema foi desenvolvido utilizando **React + Vite + TailwindCSS** no frontend e **Node.js + Express + MySQL** no backend, seguindo arquitetura em camadas para alta organização e manutenção.
+O sistema foi desenvolvido utilizando **React + Vite + TailwindCSS** no frontend e **Node.js + Express + MySQL** no backend, seguindo arquitetura em camadas para organização e manutenção.
 
+[![Express][Express.js]][Express-url]
  [![React][React.js]][React-url]
  [![Vite][Vite.js]][Vite-url]
+  [![MySQL][MySQL.com]][MySQL-url]
 [![TailwindCSS][Tailwind.css]][Tailwind-url]
  [![NodeJS][Node.js]][Node-url]
-[![Express][Express.js]][Express-url]
- [![MySQL][MySQL.com]][MySQL-url]
 
 ### Bibliotecas principais:
 - **Axios** — Cliente HTTP para consumir a API do backend
