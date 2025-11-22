@@ -8,7 +8,7 @@ O **FitCrowd** é um sistema full-stack desenvolvido para oferecer uma solução
 <p align="center">
   <img src="assets/TelaInicial.png" alt="Tela inicial do sistema FitCrowd" width="900">
 </p>
-
+---
 ## Tecnologias Utilizadas
 O sistema foi desenvolvido utilizando **React + Vite + TailwindCSS** no frontend e **Node.js + Express + MySQL** no backend, seguindo arquitetura em camadas para alta organização e manutenção.
 
@@ -24,7 +24,7 @@ O sistema foi desenvolvido utilizando **React + Vite + TailwindCSS** no frontend
 - **MySQL2** — Driver MySQL para Node.js, utilizado para todas as queries do sistema
 - **CORS** — Middleware para habilitar comunicação entre frontend e backend
 - **Dayjs** — Manipulação simplificada de datas e horários
-
+---
 ## Pré-requisitos
 
 Antes de iniciar o projeto, certifique-se de que o seu ambiente atende aos seguintes requisitos:
@@ -45,9 +45,9 @@ Antes de iniciar o projeto, certifique-se de que o seu ambiente atende aos segui
 - **MySQL Workbench**
 
   
-> [!NOTE]
->  Abra o **MySQL Workbench**, acesse a pasta `/database` do projeto e abra o arquivo `Av2_SQL_Completo` contendo: criação das tabelas e a inserção dos dados iniciais. Execute **todo o script** no botão de raio para criar o banco.
-
+> [!NOTE]  
+> Para que o projeto funcione corretamente, também é necessário criar o banco de dados. Esse procedimento será explicado na próxima seção.
+---
 ## Instalação e Execução do Projeto
 
 Siga os passos abaixo para instalar, configurar e executar o sistema FitCrowd no seu computador.
@@ -67,7 +67,19 @@ cd ProjetoFitCrowdAcademia
 ```
 ---
 
-### 2. Configurar o Backend
+
+### 2. Configurar o Banco de Dados
+
+> Certifique-se de que o MySQL Server está instalado e ativo.
+
+1. Abra o **MySQL Workbench**
+2. Vá até a pasta `/database` do projeto
+3. Abra o arquivo `AV2_SQL_Completo.sql`
+4. Execute todo o script no icone de raio, isso criará todas as tabelas necessárias e inserirá dados iniciais
+
+---
+
+### 3. Configurar o Backend
 > Certifique-se de que o banco foi criado corretamente antes de iniciar o backend.
 
 Entre na pasta do backend:
@@ -107,7 +119,7 @@ http://localhost:3000
 
 ---
 
-### 3. Configurar o Frontend
+### 4. Configurar o Frontend
 
 Em outro terminal, entre na pasta `frontend`:
 
@@ -136,17 +148,16 @@ Copie e cole esse endereço no navegador, ou aperte Ctrl + Click em cima do ende
 
 > [!IMPORTANT]
 > É necessário manter os dois terminais rodando simultaneamente, pois o frontend depende da API para funcionar. Então, certifique-se de que o backend continua ativo.
-
+---
 ## Autora
 
 Ana Beatriz Silveira Mendes
 4º Semestre – Ciência da Computação  
-
+---
 ## Licença
 
 Projeto produzido exclusivamente para fins acadêmicos.
-
-
+---
 
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
