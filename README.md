@@ -8,7 +8,9 @@ O **FitCrowd** é um sistema full-stack desenvolvido para oferecer uma solução
 <p align="center">
   <img src="assets/TelaInicial.png" alt="Tela inicial do sistema FitCrowd" width="900">
 </p>
+
 ---
+
 ## Tecnologias Utilizadas
 O sistema foi desenvolvido utilizando **React + Vite + TailwindCSS** no frontend e **Node.js + Express + MySQL** no backend, seguindo arquitetura em camadas para alta organização e manutenção.
 
@@ -153,10 +155,13 @@ Copie e cole esse endereço no navegador, ou aperte Ctrl + Click em cima do ende
 
 Ana Beatriz Silveira Mendes
 4º Semestre – Ciência da Computação  
+
 ---
+
 ## Licença
 
 Projeto produzido exclusivamente para fins acadêmicos.
+
 ---
 
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
