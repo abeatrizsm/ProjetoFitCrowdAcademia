@@ -1,105 +1,102 @@
 # FitCrowd – Sistema de Gestão de Academia
 
-Projeto full-stack para gerenciamento de alunos, instrutores, treinos e planos de treino.
-Desenvolvido utilizando React (Vite + TailwindCSS) no frontend e Node.js + Express + MySQL no backend.
+> Plataforma completa para gerenciamento de alunos, treinos, instrutores e planos de treino.
 
-Este projeto foi criado como entrega acadêmica da disciplina de Ambiente de Dados.
+O **FitCrowd** é um sistema full-stack desenvolvido para oferecer uma solução prática e simples de administração de academia. Este projeto foi criado como entrega acadêmica da disciplina de Ambiente de Dados.
 
----
 
-## Arquitetura do Projeto
-
-```
-AplicativoAcademia/
-│
-├── backend/
-│   ├── config/
-│   ├── controller/
-│   ├── service/
-│   ├── dao/
-│   ├── routes/
-│   ├── app.js
-│   ├── package.json
-│   └── node_modules/
-│
-└── frontend/
-    ├── src/
-    │   ├── pages/
-    │   ├── components/
-    │   ├── services/
-    │   ├── assets/
-    │   └── App.jsx
-    ├── index.html
-    ├── package.json
-    └── node_modules/
-```
-
+<p align="center">
+  <img src="assets/TelaInicial.png" alt="Tela inicial do sistema FitCrowd" width="900">
+</p>
 
 ---
 
 ## Tecnologias Utilizadas
+O sistema foi desenvolvido utilizando **React + Vite + TailwindCSS** no frontend e **Node.js + Express + MySQL** no backend, seguindo arquitetura em camadas para organização e manutenção.
 
-### Frontend
-- React
-- Vite
-- TailwindCSS
-- React Router
-- React Icons
+[![Express][Express.js]][Express-url]
+ [![React][React.js]][React-url]
+ [![Vite][Vite.js]][Vite-url]
+  [![MySQL][MySQL.com]][MySQL-url]
+[![TailwindCSS][Tailwind.css]][Tailwind-url]
+ [![NodeJS][Node.js]][Node-url]
 
-### Backend
-- Node.js
-- Express
-- MySQL2
-- Arquitetura em camadas (Routes, Controller, Service, DAO)
+### Bibliotecas principais:
+- **Axios** — Cliente HTTP para consumir a API do backend
+- **MySQL2** — Driver MySQL para Node.js, utilizado para todas as queries do sistema
+- **CORS** — Middleware para habilitar comunicação entre frontend e backend
+- **Dayjs** — Manipulação simplificada de datas e horários
+---
+## Pré-requisitos
 
-### Banco de Dados
-- MySQL
+Antes de iniciar o projeto, certifique-se de que o seu ambiente atende aos seguintes requisitos:
+
+- **Node.js 18 ou superior**  
+  Verifique sua versão com:
+  ```
+  node -v
+  ```
+
+- **NPM**
+  ```
+  npm -v
+  ```
+ - **Git instalado** (recomendado para clonar o repositório, mas você também pode apenas baixar o aquivo em formato .zip do projeto e abrir no seu editor de código)
+- **VsCode** (ou outro editor de código de sua preferência)
+- MySQL Server
+- **MySQL Workbench**
+
+  
+> [!NOTE]  
+> Para que o projeto funcione corretamente, também é necessário criar o banco de dados. Esse procedimento será explicado na próxima seção.
+---
+## Instalação e Execução do Projeto
+
+Siga os passos abaixo para instalar, configurar e executar o sistema FitCrowd no seu computador.
+
+### 1. Clonar o repositório
+
+Abra o terminal (CMD, PowerShell ou Bash) e execute:
+
+```
+git clone https://github.com/abeatrizsm/ProjetoFitCrowdAcademia.git
+```
+
+Entre na pasta do projeto:
+
+```
+cd ProjetoFitCrowdAcademia
+```
+---
+
+
+### 2. Configurar o Banco de Dados
+
+> Certifique-se de que o MySQL Server está instalado e ativo.
+
+1. Abra o **MySQL Workbench**
+2. Vá até a pasta `/database` do projeto
+3. Abra o arquivo `AV2_SQL_Completo.sql`
+4. Execute todo o script no icone de raio, isso criará todas as tabelas necessárias e inserirá dados iniciais
 
 ---
 
-## Modelagem das Tabelas
+### 3. Configurar o Backend
+> Certifique-se de que o banco foi criado corretamente antes de iniciar o backend.
 
-### alunos
-- id_aluno
-- nome
-- cpf
-- data_ingresso
-- telefone
-- email
-- senha
-- dias_ativos
-- treinos_concluidos
+Entre na pasta do backend:
 
-### instrutores
-- id_instrutor
-- nome
-- especialidade
-- email
-- senha
+```
+cd backend
+```
 
-### plano_treino
-- id_plano
-- nome_plano
-- objetivo
-- duracao_semanas
-- nivel
-- frequencia_semanal
-- id_aluno (FK)
-- id_instrutor (FK)
+Instale as dependências:
 
----
+```
+npm install
+```
 
-## Relacionamentos
-
-- Instrutor elabora plano de treino
-- Aluno possui plano de treino
-- Plano de treino é composto por treinos
-- Treinos são compostos por exercícios
-
----
-
-## Execução do Backend
-Primeiro você deve alterar as credencias no arquivo "db.js" que está na pasta config no backend. Configure com base no seu MySQL, mas na maioria dos casos, basta mudar o campo "password" para a sua senha.
+Altere as credencias no arquivo "db.js" que está na pasta config no backend. Configure com base no seu MySQL, mas na maioria dos casos, basta mudar o campo "password" para a sua senha.
 
 ```
 const db = mysql2.createPool({
@@ -109,54 +106,51 @@ const db = mysql2.createPool({
 	database: "gestaoAcademia",
 });
 ```
-Em seguida abra o terminal e rode: 
-```
-cd backend
-npm install
-node app.js
-```
 
-
-
----
-
-## Execução do Frontend
-Abra outro terminal, sem fechar o do backend, e rode: 
+Inicie o servidor:
 
 ```
-cd View
-cd FitCrowd
-npm install
 npm run dev
 ```
 
----
+O backend rodará por padrão em:
 
-## Endpoints
-
-### Alunos
-- GET /alunos
-- POST /alunos
-- PUT /alunos/:id
-- DELETE /alunos/:id
-
-### Instrutores
-- GET /instrutores
-- POST /instrutores
-
-### Planos de Treino
-- GET /planos
-- POST /planos
-- GET /planos/:id
+```
+http://localhost:3000
+```
 
 ---
 
-## Arquitetura do Backend
-Route → Controller → Service → DAO → MySQL
+### 4. Configurar o Frontend
 
+Em outro terminal, entre na pasta `frontend`:
 
+```
+cd frontend
+```
+
+Instale as dependências:
+
+```
+npm install
+```
+
+Inicie o frontend:
+
+```
+npm run dev
+```
+
+O frontend rodará por padrão em:
+
+```
+http://localhost:5173
+```
+Copie e cole esse endereço no navegador, ou aperte Ctrl + Click em cima do endereço no terminal.
+
+> [!IMPORTANT]
+> É necessário manter os dois terminais rodando simultaneamente, pois o frontend depende da API para funcionar. Então, certifique-se de que o backend continua ativo.
 ---
-
 ## Autora
 
 Ana Beatriz Silveira Mendes
@@ -167,5 +161,25 @@ Ana Beatriz Silveira Mendes
 ## Licença
 
 Projeto produzido exclusivamente para fins acadêmicos.
+
+---
+
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+
+[Vite.js]: https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white
+[Vite-url]: https://vitejs.dev/
+
+[Tailwind.css]: https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white
+[Tailwind-url]: https://tailwindcss.com/
+
+[Node.js]: https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white
+[Node-url]: https://nodejs.org/
+
+[Express.js]: https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white
+[Express-url]: https://expressjs.com/
+
+[MySQL.com]: https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white
+[MySQL-url]: https://www.mysql.com/
 
 
