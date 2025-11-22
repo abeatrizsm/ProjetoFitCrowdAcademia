@@ -1,8 +1,14 @@
-import {
-	buscarUsuario,
-	buscarAlunoCpf,
-	criarAlunoDAO,
-} from "../dao/alunosDAO.js";
+import {buscarUsuario,buscarAlunoCpf,criarAlunoDAO, listarTodosAlunosDAO,} from "../dao/alunosDAO.js";
+
+
+export async function listarAlunosService() {
+	try {
+		const alunos = await listarTodosAlunosDAO();
+		return { sucesso: true, alunos };
+	} catch (erro) {
+		return { sucesso: false, mensagem: "Erro ao listar alunos." };
+	}
+}
 
 export async function criarAlunoService({ nome, email, senha, telefone, cpf }) {
 

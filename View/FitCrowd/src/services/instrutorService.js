@@ -8,3 +8,11 @@ export async function criarAluno(dados) {
 		return { sucesso: false, mensagem: "Erro ao cadastrar aluno." };
 	}
 }
+export async function buscarAlunos() {
+    try {
+        const resp = await api.get("/instrutor/alunos");
+        return resp.data;
+    } catch (e) {
+        return { sucesso: false, alunos: [] };
+    }
+}

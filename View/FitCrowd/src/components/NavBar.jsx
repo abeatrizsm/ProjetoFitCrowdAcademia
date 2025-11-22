@@ -32,7 +32,13 @@ export default function NavBar() {
 				<Button icon={<MdPerson />} texto="Perfil" to="/perfil" />
 			</div>
 			<div className="flex flex-col items-start justify-center mt-auto p-10 w-full h-8 border-t border-t-gray-700">
-				<button onClick= {handleLogout} className="flex items-center gap-2 text-red-600 font-bold "><MdLogout size={22}/>Sair</button>
+				<button
+					onClick={handleLogout}
+					className="flex items-center gap-2 text-red-600 font-bold hover:text-red-900"
+				>
+					<MdLogout size={22} />
+					Sair
+				</button>
 			</div>
 		</div>
 	);

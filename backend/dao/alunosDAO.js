@@ -23,7 +23,12 @@ export async function buscarFrequencia(id) {
     return rows;
 }
 export async function criarAlunoDAO({ nome, email, senha, telefone, cpf }) {
-	const [result] = await db.query("insert into alunos (nome, email, senha, telefone, cpf, data_ingresso, dias_ativos, treinos_concluidos) values (?, ?, ?, ?, ?, CURDATE(), 0, 0)", [nome, email, senha, telefone,cpf]);
-	return result.insertId;
+	const [rows] = await db.query("insert into alunos (nome, email, senha, telefone, cpf, data_ingresso, dias_ativos, treinos_concluidos) values (?, ?, ?, ?, ?, CURDATE(), 0, 0)", [nome, email, senha, telefone,cpf]);
+	return rows.insertId;
+}
+
+export async function listarTodosAlunosDAO() {
+	const [rows] = await db.query("select id_aluno, nome, email, data_ingresso, treinos_concluidos from alunos order by nome asc");
+	return rows;
 }
 
