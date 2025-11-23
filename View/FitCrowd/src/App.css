@@ -22,3 +22,13 @@
   background: #2b303b46;
   border-radius: 9999px;
 }
+
+.inputModal {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 0.75rem;
+    background: #191d24;
+    border: 1px solid #2b303b;
+    color: white;
+}

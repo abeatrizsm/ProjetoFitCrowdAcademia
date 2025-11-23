@@ -5,6 +5,7 @@ import frequenciaRoutes from "./routes/frequenciaRoutes.js";
 import treinoRoutes from "./routes/treinosRoutes.js";
 import planoTreinoRoutes from "./routes/planoTreinoRoutes.js";
 import instrutorRoutes from "./routes/instrutorRoutes.js";
+import exerciciosRoutes from "./routes/exerciciosRoutes.js";
 
 const app = express()
 app.use(cors())
@@ -14,6 +15,7 @@ app.use("/api", frequenciaRoutes);
 app.use("/api", treinoRoutes);
 app.use("/api", planoTreinoRoutes);
 app.use("/api", instrutorRoutes);
+app.use("/api", exerciciosRoutes);
 
 const porta = 3000;
 

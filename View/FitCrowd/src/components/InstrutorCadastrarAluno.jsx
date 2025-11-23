@@ -6,6 +6,7 @@ import { buscarAlunos } from "../services/instrutorService";
 import CriarPlanoModal from "./CriarPlanoModal";
 import { obterPlanoTreino } from "../services/planoTreinoService";
 import PlanoExistenteModal from "./PlanoExistenteModal";
+import CriarTreinoModal from "./CriarTreinoModal";
 
 
 export default function InstrutorCadastrarAluno() {
@@ -16,11 +17,20 @@ export default function InstrutorCadastrarAluno() {
 	const [abrirModalPlanoExistente, setAbrirModalPlanoExistente] = useState(false);
 	const [alunoSelecionado, setAlunoSelecionado] = useState(null);
 	const [abrirModalPlano, setAbrirModalPlano] = useState(false);
+	const [abrirModalTreino, setAbrirModalTreino] = useState(false);
+	
+	function abrirCriarTreino(plano) {
+		setPlanoSelecionado(plano);
+		setAbrirModalTreino(true);
+	}
+
 
 	async function abrirModalPlanoFn(aluno) {
 		setAlunoSelecionado(aluno);
 
 		const resposta = await obterPlanoTreino(aluno.id_aluno);
+		console.log("RESPOSTA DO BACKEND:", resposta);
+
 
 		if (resposta.sucesso && resposta.plano) {
 			setPlanoSelecionado(resposta.plano);
@@ -91,7 +101,14 @@ export default function InstrutorCadastrarAluno() {
 			{abrirModalPlanoExistente && (
 				<PlanoExistenteModal
 					plano={planoSelecionado}
+					abrirCriarTreino={abrirCriarTreino}
 					fechar={() => setAbrirModalPlanoExistente(false)}
+				/>
+			)}
+			{abrirModalTreino && (
+				<CriarTreinoModal
+					plano={planoSelecionado}
+					fechar={() => setAbrirModalTreino(false)}
 				/>
 			)}
 		</div>
