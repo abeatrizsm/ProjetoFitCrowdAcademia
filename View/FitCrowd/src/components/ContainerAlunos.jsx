@@ -1,27 +1,22 @@
-export default function ContainerAlunos({ aluno }) {
+import { MdAddTask, MdCalendarToday } from "react-icons/md";
+
+export default function ContainerAlunos({ aluno, abrirModalPlanoFn }) {
 	return (
-		<div className="flex mt-5 p-4 bg-[#191d24] border border-[#2b303b] rounded-2xl w-full h-20">
-			<div className="flex flex-col ml-3">
-				<h2 className="font-semibold text-white">{aluno.nome}</h2>
-				<h2 className="text-gray-400 text-sm">{aluno.email}</h2>
-			</div>
-
-			<div className="ml-auto flex flex-col justify-center pr-3">
-				<div className="flex gap-1">
-					<span className="rounded-full text-gray-300 font-semibold text-sm">
-						Ingresso:
-					</span>
-					<h2 className="text-gray-400 text-sm">
-						{new Date(aluno.data_ingresso).toLocaleDateString("pt-BR")}
-					</h2>
+		<div className=" flex flex-col p-6 bg-[#191d24] border border-[#2b303b] rounded-2xl w-full h-56">
+			<div className="flex flex-col">
+				<h2 className="text-white font-bold text-2xl pb-1 flex gap-2">{aluno.nome}</h2>
+				<p className="text-gray-400 pb-4">{aluno.email}</p>
+				<div className="flex gap-16">
+					<p className="text-white text-lg flex gap-1"><span className="text-red-600"><MdCalendarToday className="mt-1"/></span>Ingresso: {new Date(aluno.data_ingresso).toLocaleDateString("pt-BR")}</p>
+					<p className="text-white text-lg flex gap-1"><span className="text-red-600"><MdAddTask className="mt-1"/></span>Treinos Concluidos: {aluno.treinos_concluidos}</p>
 				</div>
+				<button
+					onClick={() => abrirModalPlanoFn(aluno)}
+					className="w-full bg-[#101318] border border-[#2b303b] text-white rounded-2xl py-2 mt-6"
+				>
+					Ver Plano Treino
+				</button>
 
-				<div className="flex gap-1">
-					<span className="rounded-full text-gray-300 font-semibold text-sm">
-						Treinos:
-					</span>
-					<h2 className="text-gray-400 text-sm">{aluno.treinos_concluidos}</h2>
-				</div>
 			</div>
 		</div>
 	);

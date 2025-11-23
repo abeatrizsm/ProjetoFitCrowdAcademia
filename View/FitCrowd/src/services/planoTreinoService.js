@@ -9,3 +9,11 @@ export async function obterPlanoTreino(id) {
     }
     
 }
+export async function criarPlano(dados) {
+	try {
+		const resp = await api.post("/instrutor/criarPlano", dados);
+		return resp.data;
+	} catch (e) {
+		return { sucesso: false, mensagem: "Erro ao criar plano." };
+	}
+}

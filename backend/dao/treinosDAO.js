@@ -5,8 +5,11 @@ export async function listarTreinosDAO() {
 	return rows;
 }
 
-export async function criarTreinoDAO(id_plano, nome_treino, descricao, dia_semana) {
-    const [rows] = await db.query("insert into treinos (id_plano, nome_treino, descricao, dia_semana) values (?, ?, ?, ?)", [id_plano, nome_treino, descricao, dia_semana]);
+export async function criarTreinoDAO({ nome_treino, descricao, dia_semana, id_plano }) {
+    const [rows] = await db.query(
+        "insert into treinos (nome_treino, descricao, dia_semana, id_plano) values (?, ?, ?, ?)",
+        [nome_treino, descricao, dia_semana, id_plano]
+    );
     return rows.insertId;
 }
 
@@ -14,6 +17,8 @@ export async function adicionarExercicioDAO(id_treino, id_exercicio, ordem) {
     const [rows] = await db.query("insert into treinos_exercicios (id_treino, id_exercicio, ordem) values (?, ?, ?)",[id_treino, id_exercicio, ordem]);
     return rows;
 }
+
+
 
 export async function buscarTreinosPorDia(idAluno, diaSemana) {
 	const sql = `

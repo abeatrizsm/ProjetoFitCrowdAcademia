@@ -1,4 +1,22 @@
-import { buscarTreinosPorDia } from "../dao/treinosDAO.js";
+import { adicionarExercicioDAO, buscarTreinosPorDia, criarTreinoDAO } from "../dao/treinosDAO.js";
+
+export async function criarTreinoService(dados) {
+	if (!dados.nome_treino)
+		return { sucesso: false, mensagem: "Nome do treino obrigatório." };
+
+	if (!dados.id_plano) return { sucesso: false, mensagem: "Plano inválido." };
+
+	const id_treino = await criarTreinoDAO(dados);
+	return { sucesso: true, id_treino };
+}
+
+export async function adicionarExerciciosService(id_treino, exercicios) {
+	for (let i = 0; i < exercicios.length; i++) {
+		const ex = exercicios[i];
+		await adicionarExercicioDAO(id_treino, ex.id_exercicio, i + 1);
+	}
+	return { sucesso: true };
+}
 
 export async function listarTreinosDoDia(idAluno, diaSemana) {
 	const linhas = await buscarTreinosPorDia(idAluno, diaSemana);

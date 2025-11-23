@@ -3,16 +3,37 @@ import ContainerAlunos from "./ContainerAlunos";
 import { useState, useEffect } from "react";
 import CriarAlunoModal from "./CriarAlunoModal";
 import { buscarAlunos } from "../services/instrutorService";
+import CriarPlanoModal from "./CriarPlanoModal";
+import { obterPlanoTreino } from "../services/planoTreinoService";
+import PlanoExistenteModal from "./PlanoExistenteModal";
+
 
 export default function InstrutorCadastrarAluno() {
 	const usuario = JSON.parse(localStorage.getItem("usuario"));
 	const [abrirModal, setAbrirModal] = useState(false);
 	const [alunos, setAlunos] = useState([]);
+	const [planoSelecionado, setPlanoSelecionado] = useState(null);
+	const [abrirModalPlanoExistente, setAbrirModalPlanoExistente] = useState(false);
+	const [alunoSelecionado, setAlunoSelecionado] = useState(null);
+	const [abrirModalPlano, setAbrirModalPlano] = useState(false);
+
+	async function abrirModalPlanoFn(aluno) {
+		setAlunoSelecionado(aluno);
+
+		const resposta = await obterPlanoTreino(aluno.id_aluno);
+
+		if (resposta.sucesso && resposta.plano) {
+			setPlanoSelecionado(resposta.plano);
+			setAbrirModalPlanoExistente(true);
+		} else {
+			setAbrirModalPlano(true);
+		}
+	}
 
 	async function carregarAlunos() {
-		const resp = await buscarAlunos();
-		if (resp.sucesso) {
-			setAlunos(resp.alunos);
+		const resposta = await buscarAlunos();
+		if (resposta.sucesso) {
+			setAlunos(resposta.alunos);
 		}
 	}
 
@@ -28,7 +49,7 @@ export default function InstrutorCadastrarAluno() {
 						Olá, {usuario.nome}!
 					</h2>
 					<p className="text-white text-lg pb-5">
-						Gerencie seus todos os seus alunos
+						Gerencie seus todos os alunos e seus Planos.
 					</p>
 				</div>
 				<div className="ml-auto">
@@ -41,15 +62,14 @@ export default function InstrutorCadastrarAluno() {
 					</button>
 				</div>
 			</div>
-
-			<div className="flex flex-col w-full h-5/6 bg-[#191d24] border border-[#2b303b] rounded-2xl p-6 pl-7">
-				<h2 className="text-white font-semibold text-3xl">Lista de alunos</h2>
-
-				<div className=" overflow-y-scroll rounded-2xl pr-2">
-					{alunos.map((aluno) => (
-						<ContainerAlunos key={aluno.id_aluno} aluno={aluno} />
-					))}
-				</div>
+			<div className="grid grid-cols-2 gap-8 mt-6">
+				{alunos.map((aluno) => (
+					<ContainerAlunos
+						key={aluno.id_aluno}
+						aluno={aluno}
+						abrirModalPlanoFn={abrirModalPlanoFn}
+					/>
+				))}
 			</div>
 
 			{abrirModal && (
@@ -58,6 +78,20 @@ export default function InstrutorCadastrarAluno() {
 						setAbrirModal(false);
 						carregarAlunos();
 					}}
+				/>
+			)}
+
+			{abrirModalPlano && (
+				<CriarPlanoModal
+					aluno={alunoSelecionado}
+					fechar={() => setAbrirModalPlano(false)}
+				/>
+			)}
+
+			{abrirModalPlanoExistente && (
+				<PlanoExistenteModal
+					plano={planoSelecionado}
+					fechar={() => setAbrirModalPlanoExistente(false)}
 				/>
 			)}
 		</div>
