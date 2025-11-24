@@ -37,6 +37,10 @@ export default function CriarTreinoModal({ plano, fechar }) {
             toast.error(respTreino.mensagem);
             return;
         }
+        if (exerciciosSelecionados.length === 0) {
+            toast.error("O treino precisa ter pelo menos 1 exercício.");
+            return;
+        }
 
         const id_treino = respTreino.id_treino;
 

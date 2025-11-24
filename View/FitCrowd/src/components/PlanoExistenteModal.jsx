@@ -1,26 +1,35 @@
-import { MdFitnessCenter, MdAlarm, MdGpsFixed, MdBolt } from "react-icons/md";
+import { MdFitnessCenter, MdAlarm, MdGpsFixed, MdBolt, MdArrowBack, MdArrowBackIos, MdArrowBackIosNew, MdOutlineClose } from "react-icons/md";
 
 export default function PlanoExistenteModal({ plano, abrirCriarTreino, fechar }) {
 	return (
 		<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
 			<div className="bg-[#191d24] p-8 rounded-2xl border border-[#2b303b] w-5/12">
-
-				<h2 className="text-white text-2xl font-bold mb-6 flex gap-2">
-					<MdFitnessCenter className="text-red-600 text-3xl" />
-					Plano de Treino
-				</h2>
-
+				<div className="flex">
+					<h2 className="text-white text-2xl font-bold mb-4 mt-3 flex gap-2">
+						<MdFitnessCenter className="text-red-600 text-3xl" />
+						Plano de Treino
+					</h2>
+					<div className="flex ml-auto">
+						<button
+							className="text-gray-400 hover:text-gray-200"
+							onClick={fechar}
+						>
+							<MdOutlineClose size={30}/>
+							
+						</button>
+					</div>
+				</div>
 				<p className="text-white text-xl font-semibold mb-2">
 					{plano.nome_plano}
 				</p>
 
 				<p className="text-gray-300 mb-6">Objetivo: {plano.objetivo}</p>
 
-				<div className="flex justify-between mb-6">
+				<div className="flex gap-28 mb-6">
 					<div className="flex gap-3">
 						<MdAlarm className="text-gray-400 text-2xl mt-1" />
 						<div>
-							<p className="text-gray-400 text-sm">Duração</p>
+							<p className="text-gray-400 text-sm">Duração:</p>
 							<p className="text-white font-semibold">
 								{plano.duracao_semanas} semanas
 							</p>
@@ -30,7 +39,7 @@ export default function PlanoExistenteModal({ plano, abrirCriarTreino, fechar })
 					<div className="flex gap-3">
 						<MdGpsFixed className="text-gray-400 text-2xl mt-1" />
 						<div>
-							<p className="text-gray-400 text-sm">Frequência</p>
+							<p className="text-gray-400 text-sm">Frequência:</p>
 							<p className="text-white font-semibold">
 								{plano.frequencia_semanal}x semana
 							</p>
@@ -40,7 +49,7 @@ export default function PlanoExistenteModal({ plano, abrirCriarTreino, fechar })
 					<div className="flex gap-3">
 						<MdBolt className="text-gray-400 text-2xl mt-1" />
 						<div>
-							<p className="text-gray-400 text-sm">Nível</p>
+							<p className="text-gray-400 text-sm">Nível:</p>
 							<p className="text-white font-semibold">{plano.nivel}</p>
 						</div>
 					</div>
@@ -52,15 +61,6 @@ export default function PlanoExistenteModal({ plano, abrirCriarTreino, fechar })
 				>
 					Criar Treino
 				</button>
-
-				<div className="flex justify-end mt-6">
-					<button
-						className="text-gray-400 hover:text-gray-200"
-						onClick={fechar}
-					>
-						Fechar
-					</button>
-				</div>
 			</div>
 		</div>
 	);

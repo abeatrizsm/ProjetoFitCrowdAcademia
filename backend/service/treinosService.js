@@ -1,16 +1,27 @@
 import { adicionarExercicioDAO, buscarTreinosPorDia, criarTreinoDAO } from "../dao/treinosDAO.js";
 
 export async function criarTreinoService(dados) {
-	if (!dados.nome_treino)
+	if (!dados.nome_treino || dados.nome_treino.trim() === "")
 		return { sucesso: false, mensagem: "Nome do treino obrigatório." };
+
+	if (!dados.descricao || dados.descricao.trim() === "")
+		return { sucesso: false, mensagem: "Descrição obrigatória." };
+
+	if (!dados.dia_semana || dados.dia_semana.trim() === "")
+		return { sucesso: false, mensagem: "Selecione o dia da semana." };
 
 	if (!dados.id_plano) return { sucesso: false, mensagem: "Plano inválido." };
 
 	const id_treino = await criarTreinoDAO(dados);
+
 	return { sucesso: true, id_treino };
 }
 
+
 export async function adicionarExerciciosService(id_treino, exercicios) {
+	if (!exercicios || exercicios.length === 0) {
+        return { sucesso: false, mensagem: "É necessário adicionar pelo menos um exercício." };
+    }
 	for (let i = 0; i < exercicios.length; i++) {
 		const ex = exercicios[i];
 		await adicionarExercicioDAO(id_treino, ex.id_exercicio, i + 1);

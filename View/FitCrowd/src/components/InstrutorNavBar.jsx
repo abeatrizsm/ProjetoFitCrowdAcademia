@@ -28,8 +28,6 @@ export default function InstrutorNavBar() {
 			</div>
 			<div className="m-6">
 				<Button icon={<MdAccessibility />} texto="Alunos" to="/instrutor" />
-				<Button icon={<MdBallot />} texto="Planos" to="/criarPlano" />
-				<Button icon={<MdFitnessCenter />} texto="Treinos" to="/criarTreinos" />
 				<Button
 					icon={<MdAddCircleOutline />}
 					texto="Exercicios"
