@@ -39,10 +39,10 @@ export async function criarAlunoService({ nome, email, senha, telefone, cpf }) {
 		};
 	}
 
-	if (!/^\d{10,11}$/.test(telefone)) {
+	if (!/^\d{11}$/.test(telefone)) {
 		return {
 			sucesso: false,
-			mensagem: "Telefone deve conter 10 ou 11 números.",
+			mensagem: "Telefone deve conter 11 números.",
 		};
 	}
 
