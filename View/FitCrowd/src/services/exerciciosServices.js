@@ -25,3 +25,17 @@ export async function registrarCheckIn(id, dados) {
 		);
 	}
 }
+
+export async function excluirExercicio(id_exercicio) {
+	try {
+		const resp = await api.delete(`/instrutor/exercicios/${id_exercicio}`);
+		return resp.data;
+	} catch (erro) {
+		return (
+			erro.response?.data || {
+				sucesso: false,
+				mensagem: "Erro ao excluir exercício.",
+			}
+		);
+	}
+}

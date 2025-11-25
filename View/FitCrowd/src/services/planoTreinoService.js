@@ -17,3 +17,17 @@ export async function criarPlano(dados) {
 		return { sucesso: false, mensagem: "Erro ao criar plano." };
 	}
 }
+
+export async function apagarPlano(id_plano) {
+	try {
+		const resp = await api.delete(`/plano/${id_plano}`);
+		return resp.data;
+	} catch (erro) {
+		return (
+			erro.response?.data || {
+				sucesso: false,
+				mensagem: "Erro ao apagar plano.",
+			}
+		);
+	}
+}

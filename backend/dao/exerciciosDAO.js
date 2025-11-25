@@ -9,3 +9,7 @@ export async function listarExerciciosDAO() {
 export async function cadastrarExercicioDAO(nome, grupo_muscular, repeticoes, series) {
     const [rows] = await db.query("insert into exercicios(nome, grupo_muscular, series, repeticoes) values(?,?,?,?);", [nome,grupo_muscular,repeticoes,series])
 }
+export async function excluirExercicioDAO(id_exercicio) {
+	const [rows] = await db.query("delete from exercicios where id_exercicio = ?",[id_exercicio]);
+	return rows;
+}

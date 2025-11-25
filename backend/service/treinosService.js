@@ -1,22 +1,27 @@
 import { adicionarExercicioDAO, buscarTreinosPorDia, criarTreinoDAO } from "../dao/treinosDAO.js";
 
 export async function criarTreinoService(dados) {
-	if (!dados.nome_treino || dados.nome_treino.trim() === "")
-		return { sucesso: false, mensagem: "Nome do treino obrigatório." };
+    if (!dados.nome_treino || dados.nome_treino.trim() === "")
+        return { sucesso: false, mensagem: "Nome do treino obrigatório." };
 
-	if (!dados.descricao || dados.descricao.trim() === "")
-		return { sucesso: false, mensagem: "Descrição obrigatória." };
+    if (!/^[A-Za-zÀ-ÿ\s]+$/.test(dados.nome_treino))
+        return { sucesso: false, mensagem: "O nome deve conter apenas letras." };
 
-	if (!dados.dia_semana || dados.dia_semana.trim() === "")
-		return { sucesso: false, mensagem: "Selecione o dia da semana." };
+    if (!dados.descricao || dados.descricao.trim() === "")
+        return { sucesso: false, mensagem: "Descrição obrigatória." };
 
-	if (!dados.id_plano) return { sucesso: false, mensagem: "Plano inválido." };
+    if (!/^[A-Za-zÀ-ÿ\s]+$/.test(dados.descricao))
+        return { sucesso: false, mensagem: "A descrição deve conter apenas letras." };
 
-	const id_treino = await criarTreinoDAO(dados);
+    if (!dados.dia_semana || dados.dia_semana.trim() === "")
+        return { sucesso: false, mensagem: "Selecione o dia da semana." };
 
-	return { sucesso: true, id_treino };
+    if (!dados.id_plano)
+        return { sucesso: false, mensagem: "Plano inválido." };
+
+    const id_treino = await criarTreinoDAO(dados);
+    return { sucesso: true, id_treino };
 }
-
 
 export async function adicionarExerciciosService(id_treino, exercicios) {
 	if (!exercicios || exercicios.length === 0) {

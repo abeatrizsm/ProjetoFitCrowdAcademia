@@ -24,13 +24,10 @@ export default function InstrutorCadastrarAluno() {
 		setAbrirModalTreino(true);
 	}
 
-
 	async function abrirModalPlanoFn(aluno) {
 		setAlunoSelecionado(aluno);
 
 		const resposta = await obterPlanoTreino(aluno.id_aluno);
-		console.log("RESPOSTA DO BACKEND:", resposta);
-
 
 		if (resposta.sucesso && resposta.plano) {
 			setPlanoSelecionado(resposta.plano);

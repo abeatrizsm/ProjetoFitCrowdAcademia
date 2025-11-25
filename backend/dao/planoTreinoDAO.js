@@ -10,3 +10,8 @@ export async function criarPlanoDAO({nome_plano,objetivo,duracao_semanas,nivel,f
 		"insert into plano_treino (nome_plano, objetivo, duracao_semanas, nivel, frequencia_semanal, id_aluno, id_instrutor) values (?, ?, ?, ?, ?, ?, ?)",[nome_plano,objetivo,duracao_semanas,nivel,frequencia_semanal,id_aluno,id_instrutor,]);
 	return rows.insertId;
 }
+
+export async function apagarPlanoDAO(id_plano) {
+	const [rows] = await db.query("delete from plano_treino where id_plano = ?", [id_plano]);
+	return rows;
+}

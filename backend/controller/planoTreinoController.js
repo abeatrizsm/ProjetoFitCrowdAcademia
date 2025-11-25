@@ -1,4 +1,4 @@
-import { criarPlanoService, obterPlano } from "../service/planoTreinoService.js"
+import { apagarPlanoService, criarPlanoService, obterPlano } from "../service/planoTreinoService.js"
 
 export async function procurarPlano(req, res) {
     const {id} = req.params
@@ -18,5 +18,11 @@ export async function procurarPlano(req, res) {
 
 export async function criarPlano(req, res) {
 	const resultado = await criarPlanoService(req.body);
+	return res.status(200).json(resultado);
+}
+
+export async function apagarPlano(req, res) {
+	const { id_plano } = req.params;
+	const resultado = await apagarPlanoService(id_plano);
 	return res.status(200).json(resultado);
 }

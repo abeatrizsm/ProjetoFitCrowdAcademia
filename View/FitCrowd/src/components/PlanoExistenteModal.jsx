@@ -1,6 +1,19 @@
+import toast from "react-hot-toast";
 import { MdFitnessCenter, MdAlarm, MdGpsFixed, MdBolt, MdArrowBack, MdArrowBackIos, MdArrowBackIosNew, MdOutlineClose } from "react-icons/md";
+import { apagarPlano } from "../services/planoTreinoService";
 
 export default function PlanoExistenteModal({ plano, abrirCriarTreino, fechar }) {
+	async function handleApagar(plano) {
+		const resposta = await apagarPlano(plano.id_plano);
+
+		if (resposta.sucesso) {
+			toast.success("Plano apagado.");
+			fechar();
+		} else {
+			toast.error(resposta.mensagem);
+		}
+	}
+
 	return (
 		<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
 			<div className="bg-[#191d24] p-8 rounded-2xl border border-[#2b303b] w-5/12">
@@ -14,8 +27,7 @@ export default function PlanoExistenteModal({ plano, abrirCriarTreino, fechar })
 							className="text-gray-400 hover:text-gray-200"
 							onClick={fechar}
 						>
-							<MdOutlineClose size={30}/>
-							
+							<MdOutlineClose size={30} />
 						</button>
 					</div>
 				</div>
@@ -55,12 +67,21 @@ export default function PlanoExistenteModal({ plano, abrirCriarTreino, fechar })
 					</div>
 				</div>
 
-				<button
-					className="w-full bg-red-600 text-white py-3 rounded-xl font-semibold hover:bg-red-700"
-					onClick={() => abrirCriarTreino(plano)}
-				>
-					Criar Treino
-				</button>
+				<div className="flex gap-5">
+					<button
+						className="w-full bg-red-600 text-white py-3 rounded-xl font-semibold hover:bg-red-700"
+						onClick={() => handleApagar(plano)}
+					>
+						Apagar Plano
+					</button>
+
+					<button
+						className="w-full bg-red-600 text-white py-3 rounded-xl font-semibold hover:bg-red-700"
+						onClick={() => abrirCriarTreino(plano)}
+					>
+						Criar Treino
+					</button>
+				</div>
 			</div>
 		</div>
 	);

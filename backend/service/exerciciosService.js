@@ -1,5 +1,20 @@
-import { cadastrarExercicioDAO, listarExerciciosDAO } from "../dao/exerciciosDAO.js";
+import { cadastrarExercicioDAO, excluirExercicioDAO, listarExerciciosDAO } from "../dao/exerciciosDAO.js";
 
+
+
+export async function excluirExercicioService(id_exercicio) {
+	if (!id_exercicio) return { sucesso: false, mensagem: "Exercício inválido." };
+
+	try {
+		await excluirExercicioDAO(id_exercicio);
+		return { sucesso: true, mensagem: "Exercício excluído com sucesso." };
+	} catch (erro) {
+		return {
+			sucesso: false,
+			mensagem: "Não é possível excluir: exercício vinculado a treinos.",
+		};
+	}
+}
 export async function listarExerciciosService() {
 	const exercicios = await listarExerciciosDAO();
 	return { sucesso: true, exercicios };
