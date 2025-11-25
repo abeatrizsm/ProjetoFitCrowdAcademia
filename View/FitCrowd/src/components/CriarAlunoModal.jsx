@@ -10,12 +10,12 @@ export default function CriarAlunoModal({ fechar }) {
 	const [cpf, setCpf] = useState("");
 
 	async function salvar() {
-		const resp = await criarAluno({ nome, email, senha, telefone, cpf });
-		if (resp.sucesso) {
+		const resposta = await criarAluno({ nome, email, senha, telefone, cpf });
+		if (resposta.sucesso) {
 			toast.success("Aluno criado!");
 			fechar();
 		} else {
-			toast.error(resp.mensagem);
+			toast.error(resposta.mensagem);
 		}
 	}
 
