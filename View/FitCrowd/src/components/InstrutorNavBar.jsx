@@ -23,7 +23,7 @@ export default function InstrutorNavBar() {
 						{" "}
 						FitCrowd{" "}
 					</h2>
-					<p className="text-gray-300 text-xs">Painel Administrador</p>
+					<p className="text-gray-300 text-xs">Personal</p>
 				</div>
 			</div>
 			<div className="m-6">
