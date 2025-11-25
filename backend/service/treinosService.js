@@ -24,7 +24,7 @@ export async function criarTreinoService(dados) {
 }
 
 export async function adicionarExerciciosService(id_treino, exercicios) {
-	if (!exercicios || exercicios.length === 0) {
+	if (!exercicios || exercicios.length == 0) {
         return { sucesso: false, mensagem: "É necessário adicionar pelo menos um exercício." };
     }
 	for (let i = 0; i < exercicios.length; i++) {
